@@ -13,7 +13,7 @@ class Opcoes:
         print("CRUD Encerrado")
             
     @classmethod
-    def ListandoDados(cls, nome_arquivo = nome_arquivo):
+    def ListandoDados(cls, nome_arquivo='contatos.json'):
         try:
             with open(nome_arquivo, 'r') as file:
                 dados = json.load(file)
@@ -25,17 +25,23 @@ class Opcoes:
             print("Lista de contatos vazia")
             return
         
-        nomes = []
-
         for contato in dados:
-            nomes.append(contato['nome'])
-        
-        os.system('cls')
-        print("Listando contatos...")
-        print(", ".join(nomes))
-        print()
-        
+            print(f'ID - {contato['id']}, Nome - {contato['nome']}, Número - {contato['numero']}, Idade - {contato['idade']}')
+            
 
     def EditandoContato(self):
-        pass
+        try:
+            with open(nome_arquivo, 'r') as file:
+                dados = json.load(file)
+        except FileNotFoundError:
+            print("Arquivo não encontrado")
+            return
         
+        if not dados:
+            print("Lista de contatos vazia")
+            return
+        
+        for contato in dados:
+            print(f'ID - {contato['id']}, Nome - {contato['nome']}, Número - {contato['numero']}, Idade - {contato['idade']}')
+        
+        id = input("Qual ID do contato que você deseja editar: ")

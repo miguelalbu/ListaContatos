@@ -22,8 +22,10 @@ while(True):
 
     elif(op == 3):
         opcoes.EditandoContato()
+
     elif(op == 4):
         opcoes.ListandoDados()
+        
     else:
         opcoes.mensagem_encerrando()
         break

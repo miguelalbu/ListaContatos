@@ -15,7 +15,7 @@ class Opcoes:
     @classmethod
     def ListandoDados(cls, nome_arquivo='contatos.json'):
         try:
-            with open(nome_arquivo, 'r') as file:
+            with open(nome_arquivo, 'r', encoding='utf-8') as file:
                 dados = json.load(file)
         except FileNotFoundError:
             print("Arquivo não encontrado")
@@ -26,12 +26,12 @@ class Opcoes:
             return
         
         for contato in dados:
-            print(f'ID - {contato['id']}, Nome - {contato['nome']}, Número - {contato['numero']}, Idade - {contato['idade']}')
+            print(f'ID - {contato["id"]}, Nome - {contato["nome"]}, Número - {contato["numero"]}, Idade - {contato["idade"]}')
             
     @classmethod
     def EditandoContato(cls):
         try:
-            with open(nome_arquivo, 'r') as file:
+            with open(nome_arquivo, 'r', encoding='utf-8') as file:
                 dados = json.load(file)
         except FileNotFoundError:
             print("Arquivo não encontrado")
@@ -68,7 +68,7 @@ class Opcoes:
 
         
         try:
-            with open(nome_arquivo, 'w') as file:
-                json.dump(dados, file)
+            with open(nome_arquivo, 'w', encoding='utf-8') as file:
+                json.dump(dados, file, ensure_ascii=False, indent=4)
         except Exception as e:
             print(f"Erro ao escrever no arquivo: {e}")

@@ -7,8 +7,10 @@ class Rem:
     @classmethod
     def RemovendoContato(cls):    
         try:
-            with open(nome_arquivo, 'r') as file:
+           with open(nome_arquivo, 'r', encoding='utf-8') as file:
+                
                 dados = json.load(file)
+
         except FileNotFoundError:
             print("Arquivo não encontrado")
             return
@@ -35,8 +37,9 @@ class Rem:
                 del dados[index]
             
             
-            with open(nome_arquivo, 'w') as file:
-                json.dump(dados, file, indent=4)
+            with open(nome_arquivo, 'w', encoding='utf-8') as file:
+                json.dump(dados, file, ensure_ascii=False, indent=4)
+
             
             print(f"Contato '{nome_del}' removido com sucesso.")
         else:
